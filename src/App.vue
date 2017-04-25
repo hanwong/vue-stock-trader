@@ -12,14 +12,21 @@
 </template>
 
 <script>
+  import {mapActions} from 'vuex';
   import Header from './components/Header.vue';
 
   export default {
+    methods: {
+      ...mapActions({
+        fetchData: 'loadData'
+      })
+    },
     components: {
       'appHeader': Header
     },
     created() {
-      this.$store.dispatch('initStocks');
+      // this.$store.dispatch('initStocks');
+      this.fetchData();
     }
   }
 </script>
